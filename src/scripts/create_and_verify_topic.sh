@@ -14,4 +14,4 @@ sudo /usr/local/Cellar/kafka/2.0.0/libexec/bin/kafka-topics.sh --zookeeper local
 sudo /usr/local/Cellar/kafka/2.0.0/libexec/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 
 # consume messages from a test topic
-sudo /usr/local/Cellar/kafka/2.0.0/libexec/bin/kafka-conscd ole-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+sudo /usr/local/Cellar/kafka/2.0.0/libexec/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
