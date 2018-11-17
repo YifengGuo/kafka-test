@@ -1,10 +1,13 @@
-import com.yifeng.kafka_test.producer.KafkaProducerGenerator;
+package com.yifeng.kafka_test.producer;
+
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.ExecutionException;
 
@@ -12,6 +15,7 @@ import java.util.concurrent.ExecutionException;
  * Created by guoyifeng on 10/12/18
  */
 public class KafkaProducerGeneratorTest {
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaProducerGeneratorTest.class);
     private KafkaProducer<String, String> producer;
     private ProducerRecord<String, String> record;
     @Before
@@ -29,14 +33,14 @@ public class KafkaProducerGeneratorTest {
         try {
             producer.send(record);
         } catch (Exception e) {
-            e.printStackTrace();
+            LOG.info("error in sending record to consumer, {}", e.getMessage());
         }
     }
 
     @Test
     public void testSynchronousSender() {
         try {
-            producer.send(record).get();  // get() wait for a reply from kafka
+            LOG.info("{}", producer.send(record).get());  // get() wait for a reply from kafka
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
