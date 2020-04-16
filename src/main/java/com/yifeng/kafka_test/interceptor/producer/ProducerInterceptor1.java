@@ -10,6 +10,11 @@ import java.util.Map;
 
 /**
  * Created by guoyifeng on 4/16/20
+ *
+ * to use interceptors as a chain:
+ * properties.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, ProducerInterceptorPrefix1.class.getName( ) +
+ *           ”,” + ProducerInterceptorPrefix2.class.getName());
+ * The invocation order corresponds with order above
  */
 public class ProducerInterceptor1 implements ProducerInterceptor<String, String> {
 
