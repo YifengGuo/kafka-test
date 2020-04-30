@@ -14,6 +14,9 @@ import java.util.*;
  * Created by guoyifeng on 4/30/20
  *
  * this interceptor is to filter out messages whose create timestamp till now is treated as expired
+ *
+ * to use it: declare in props for consumer
+ *  props.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, ConsumerTTLInterceptor.class.getName());
  */
 public class ConsumerTTLInterceptor implements ConsumerInterceptor<String, String> {
 
